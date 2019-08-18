@@ -66,3 +66,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### In Case of Problems
+
+yarn add @babel/runtime
+
+## react-scripts' is not recognized as an internal or external command, operable program or batch file.
+
+I was not in backend folder !!

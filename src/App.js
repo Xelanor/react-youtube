@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>
-          Hello World!!
-        </h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    URL: ""
+  }
+
+  onInputChange = (e) => {
+    this.setState({
+      URL: e.target.value
+    })
+  }
+
+  downloadHandler = () => {
+    let url = { URL: this.state.URL }
+    axios.post('http://localhost:5000/download/', url)
+      .then(res => console.log(res))
+      .catch((error) => { console.log(error); })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1 className="heading">My Own Youtube Downloader !</h1>
+        <input onChange={this.onInputChange} className="URL-input" placeholder="https://www.youtube.com/watch?v=MtN1YnoL46Q"></input>
+        <button onClick={this.downloadHandler} className="convert-button">Convert</button>
+      </div>
+    );
+  }
 }
 
 export default App;
